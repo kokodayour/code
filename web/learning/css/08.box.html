@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>08.box</title>
+</head>
+<style>
+    div {
+        height: 100px;
+        width: 100px;
+        border: 2px solid pink;
+        /* 圆角边框 */
+        border-radius: 10%;
+
+    }
+
+    div:hover {
+        /* 盒子阴影: 水平阴影的位置 垂直阴影的位置 模糊距离 阴影的尺寸 阴影的颜色 外(内)部阴影 */
+        /* 简单地说: 阴影向右移动的距离 向下移动的距离 模糊程度(羽化) 阴影尺寸 */
+        /* 不占用空间 */
+        box-shadow: 10px 10px 10px 10px black;
+    }
+</style>
+
+<body>
+    <div>This is a box with radius</div>
+</body>
+
+</html>

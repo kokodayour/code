@@ -1,0 +1,5 @@
+ctrl+B: 查看函数定义
+ctrl+左击变量: 查看用法
+ctrf+F: 搜索 
+ctrl+R: 替换字符
+ctrl+alt+enter: 格式化

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>06.表单标签</title>
+</head>
+
+<body>
+    <form action="demo.php" method="post" name="signIn">
+        <!-- type是输入框的类型 有文本框 密码框 单选框 复选框 按钮框-->
+        <!-- value是输入框的初始值 -->
+        <!-- maxlength是限制输入的最大字符数 -->
+        用户名: <input type="text" value="请输入用户名" maxlength="4"><br>
+        密码: <input type="password" placeholder="密码" maxlength="11"><br>
+        <!-- name相当于key value是用户输入的值 -->
+        <!-- label标签旨在为用户提供一个用户友好的界面 需要使用for属性与关联元素的id属性配对 点击label元素时即点击关联元素-->
+        性别: <label for="man">男</label><input id="man" type="radio" name="sex" value="男">
+        <label for="woman">女</label><input id="woman" type="radio" name="sex" value="女" checked="checked"><br>
+        <!-- 下拉菜单 -->
+        籍贯: <select name="location" id="location">
+            <option value="shandong">山东</option>
+            <option value="hubei">湖北</option>
+            <option value="hunan" checked="checked">湖南</option>
+        </select><br>
+        爱好: 吃饭<input type="checkbox" name="hobby">
+        睡觉<input type="checkbox" name="hobby">
+        打豆豆<input type="checkbox" name="hobby" checked="checked"><br>
+        <input type="submit" value="免费注册">
+        <input type="reset" value="重新填写">
+        <input type="button" value="获取短信验证码"><br>
+        上传头像: <input type="file"><br>
+        <textarea name="liuyanban" id="liuyanban" cols="50" rows="10">欢迎留言!</textarea>
+    </form>
+</body>
+
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>05.bg-img</title>
+  <style>
+    /* 背景图片需要行高才能显示！ */
+    div {
+      width: 400px;
+      height: 400px;
+      background-image: url(../image/temperature.jpeg);
+    }
+
+    /* 图片没占满容器的话会默认平铺 */
+    .repeat {
+      width: 600px;
+      height: 150px;
+      background-color: #bc4747;
+      background-image: url(../image/logo.png);
+      /* 默认平铺（沿x轴和y轴） */
+      background-repeat: no-repeat;
+      /* 如果两个值都是方位名词 位置无关  如果省略一个则另一个默认center*/
+      background-position: center right;
+      /* 如果两值中包括精确单位 则第一个是x 第二个是y */
+      background-position: 20px 20px;
+      /* 混合单位 前者是行 后者是列 */
+      background-position: center 20px;
+      /* 背景固定: 无论怎么移动背景图片都不会改变 */
+      background-attachment: fixed;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 背景图片区别于img标签 前者作为展示的背景 里面可以填充一些文字或icon 后者则是作为一个块单独占据一个地方用于产品展示 -->
+  <div>123</div>
+  <div class="repeat"></div>
+</body>
+
+</html>

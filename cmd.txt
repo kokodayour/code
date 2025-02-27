@@ -1,0 +1,28 @@
+git操作
+创建版本库: git init
+将文件添加到仓库版本控制: git add readme.txt
+1. 通过通配符添加一类文件: git add *.txt
+2. 通过空格键添加多个文件: git add file1.txt file2.txt
+3. 添加目录下全部文件(包括子目录): git add -A
+将文件提交到仓库(本地): git commit -m "消息"
+
+查看仓库的状态: git status
+查看文件被修改的地方: 查看文件被修改的地方: git diff <filename>
+显示最近三次的提交日志: git log
+或者简洁版: git log --pretty=oneline
+
+查看远程库: git origin -v
+本地仓库与远程库关联: git remote add origin <repository>
+推送本地库(首次): git push -u origin <branch> 
+u的全称是upstream 将本地分支与上游连接
+推送本地库(后续): git push
+
+切换磁盘: d:
+进入文件夹相对路径: cd ./code/python
+进入文件夹绝对路径: cd d:\software\git
+回到上级目录: cd ../
+新建文件夹: md test
+(cd=change dictionary 
+md=make dictionary)
+
+打开搜索: win+s

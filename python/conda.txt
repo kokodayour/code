@@ -1,0 +1,7 @@
+创建虚拟环境 conda create -n ENVNAME python=版本号
+查看虚拟环境 conda env list
+激活虚拟环境 conda activate ENVNAME 
+退出虚拟环境 conda deactivate
+不默认每次进入虚拟环境 conda config --set auto_activate_base false
+删除虚拟环境 conda remove --name ENVNAME --all
+升级包 conda update PACKAGENAME

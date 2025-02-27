@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>12.position</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: #e01b1b;
+            border-radius: 10%;
+        }
+
+        .relative {
+            position: relative;
+            top: 50px;
+            left: 50px;
+            background-color: #ce9191;
+        }
+
+        .absolute {
+            position: absolute;
+            top: 50px;
+            right: 50px;
+            background-color: #5652a0;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 定位可以让盒子自由的在某个盒子内移动位置或者固定屏幕中某个位置 并且可以压住其它盒子 -->
+    <!-- 定位 = 定位模式 + 边偏移 -->
+    <!-- 定位模式用于指定一个元素在文档中的定位方式 边偏移则决定了该元素的最终位置 -->
+
+    <!-- 相对定位: 元素相对于原来位置进行偏移 -->
+    <!-- 与浮动不同 相对定位的元素原来的位置会保留 但不会挤兑其它标准流盒子 表现为压在其它盒子上面-->
+    <div class="relative"></div>
+    <div></div>
+
+    <!-- 绝对定位: 元素相对于祖先元素进行偏移 -->
+    <!-- 如果父元素没有定位 那么子元素还是相对与浏览器进行定位 -->
+    <div>
+        <div class="absolute"></div>
+    </div>
+
+</body>
+
+</html>

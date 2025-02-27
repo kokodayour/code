@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>01.selection</title>
+  <style>
+    /* 通配符选择器 选择所有元素 */
+    * {
+      margin: 0%;
+      padding: 0%;
+    }
+
+    /* 元素选择器 */
+    div {
+      margin: 0%;
+      width: 240px;
+      height: 240px;
+    }
+
+    /* 类选择器 */
+    .one {
+      background-color: bisque;
+    }
+
+    /* id选择器 */
+    #two1 {
+      background-color: blue;
+    }
+
+    #two2 {
+      background-color: blueviolet;
+    }
+
+    /* 后代选择器 选择.one后面所有的div */
+    .one div {
+      width: 39px;
+      height: 39px;
+      /* background-color: aqua; */
+    }
+
+    /* 子代选择器 只选择.one下一级的div */
+    .one>div {
+      width: 120px;
+      height: 120px;
+    }
+
+    /* 并集选择器 一次选择多个元素 注意要加逗号 否则是后代选择器！！！ */
+    #three1,
+    #three2 {
+      background-color: rgb(85, 113, 113);
+    }
+
+    /* 相邻兄弟选择器 选择指定元素同父级的下一个元素 */
+    #three2+div {
+      background-color: aquamarine;
+    }
+
+    #last {
+      width: 130px;
+      height: 130px;
+    }
+
+    /* 多类名 */
+    .col {
+      background-color: rgb(70, 70, 24);
+    }
+
+    /* 没点的链接 */
+    a:link {
+      color: red;
+    }
+
+    /* 点过的链接 */
+    a:visited {
+      color: blue;
+    }
+
+    /* 鼠标悬停的链接 */
+    a:hover {
+      color: orange;
+    }
+
+    /* 鼠标点击但没松开的链接 */
+    a:active {
+      color: blue
+    }
+
+    /* 当元素激活时应用样式 */
+    button:active {
+      background-color: #ae5454;
+    }
+
+    /* 当元素获得焦点时应用样式 */
+    input[type="text"]:focus {
+      border: 2px solid blue
+    }
+
+    /* 某个元素的第一个子元素 */
+    ul li:first-child {
+      font-weight: bold;
+    }
+
+    /* 某元素的最后一个子元素 */
+    ul li:last-child {
+      font-weight: bold;
+    }
+
+    /* 某元素的第n个元素 even表示偶数位置的子元素 2n+1表示对应位置子元素 n取0,1,2...*/
+    ul li:nth-child(2) {
+      background-color: #753a3a;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="one">
+    <div class="two" id="two1">
+      <div id="three1">1</div>
+      <div id="three2">2</div>
+      <div>3</div>
+    </div>
+    <div class="two" id="two2">
+      <div>4</div>
+      <div>5</div>
+      <div class="three col" id="last">6</div>
+    </div>
+  </div>
+  <div>伪类选择器用于选择处于特定状态的元素的一种选择器 允许根据元素的状态(如鼠标悬停 获得焦点 被访问过等)或元素在文档中的位置结构来添加样式</div>
+  <a href="https:/whu.edu.cn">链接伪类</a><br>
+  <button>点我</button><br>
+  <input type="text">
+  <ul>
+    <li>结构伪类</li>
+    <li>结构伪类</li>
+    <li>结构伪类</li>
+    <li>结构伪类</li>
+  </ul>
+</body>
+
+</html>

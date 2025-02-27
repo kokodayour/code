@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>07.box</title>
+    <style>
+        .demo3 {
+            height: 100px;
+            width: 100px;
+            background-color: #5d3232;
+            margin: 0 auto;
+        }
+
+        .demo4 {
+            height: 200px;
+            width: 200px;
+            background-color: red;
+            border-color: pink;
+            border-width: 1px;
+            border-style: solid;
+            margin-top: 20px;
+        }
+
+        .demo5 {
+            height: 100px;
+            width: 100px;
+            background-color: blue;
+            /* margin-top: 30px; */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="demo3">margin设置为auto则自动居中对齐
+        (前提是设置了宽度 否则元素默认继承父元素的宽度而全部占满)</div>
+    <div>当上下相邻的两个块元素相遇时 它们的margin会重合 并取两个值中的较大者</div>
+    <div class="demo4">
+        <div class="demo5">对于两个嵌套关系的块元素 父元素有上外边距同时子元素也有上外边距 
+            此时父元素会塌陷较大的外边距值 从而子元素相对于父元素的位置不变</div>
+    </div>
+    <ul>
+        <li>为父元素定义上边框</li>
+        <li>为父元素定义上内边距</li>
+        <li>为父元素添加overflow: hidden</li>
+    </ul>
+</body>
+
+</html>

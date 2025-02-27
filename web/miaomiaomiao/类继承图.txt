@@ -1,0 +1,14 @@
+Miao:
+    Resource:
+        CatMint
+        Log
+        Mineral
+    Building:
+        FoodProduction:
+            CollectCatMint
+            CatMintField
+            Pasture
+            Canal
+        Population:
+            
+    Cat:

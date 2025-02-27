@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10.float</title>
+    <style>
+        div {
+            height: 100px;
+            width: 100px;
+            background-color: black;
+        }
+
+        .exp1 {
+            float: left;
+            height: 50px;
+            width: 50px;
+            background-color: pink;
+        }
+
+        .exp2 {
+            float: left;
+            height: 100px;
+            width: 50px;
+            background-color: yellowgreen;
+        }
+
+        .exp3 {
+            float: left;
+            height: 100px;
+            width: 100px;
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 浮动元素会脱离标准流(脱标) -->
+    <!-- 浮动的元素会具有行内块元素的特性 -->
+    <div class="exp1">float box1</div>
+    <!-- 原本所占的空间被下一个标准流元素所占据 表现为好像在页面上浮动起来了一样 -->
+    <div class="exp2">float box2</div>
+    <div></div>
+    <!-- 浮动只会影响后续的标准流 -->
+    <!-- 并没有和前两个盒子一样浮动到第一行 -->
+    <div class="exp3">float box3</div>
+</body>
+
+</html>

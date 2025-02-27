@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>04.display</title>
+    <style>
+      div {
+        height: 100px;
+        background-color: #b97a7a;
+      }
+      a {
+        height: 100px;
+        background-color: hotpink;
+      }
+      img {
+        height: 100px;
+      }
+      /* 通过display切换元素显示模式 */
+      .block {
+        display: block;
+        height: 100px;
+        background-color: #a88585;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 文字类元素里不能使用块级元素 -->
+    <div>块元素独占一行 可以调节内外边距和高宽 宽度默认是父级元素的100%</div>
+    <div>文字类元素里不能使用块级元素</div>
+    <a href="#">行内元素一行可以有多个 但无法设置高宽</a>
+    <a href="#">默认宽度取决于其内容 只能容纳文本或其它行内元素</a>
+    <img src="../image/logo.png" alt="行内块元素兼具两者的特点" />
+    <img src="../image/logo.png" alt="既可以一行摆放多个 又可以设置高宽" />
+    <a href="#" class="block">这是一个块元素</a>
+  </body>
+</html>

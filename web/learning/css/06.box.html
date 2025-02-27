@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>06.box</title>
+    <style>
+        div {
+            /* height: 100px; */
+            width: 100px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: pink;
+            /* 连写 */
+            border: 5px solid pink;
+            /* 只设置某一侧边框 */
+            border-bottom: 5px solid pink;
+            /* 圆角边框 */
+            border-radius: 1px;
+            padding-left: 2em;
+            padding-top: 1em;
+        }
+
+        .demo1 {
+            height: 100px;
+            background-color: #583939;
+            padding: 20px;
+        }
+
+        .demo2 {
+            height: 100px;
+            width: 100%;
+            background-color: #fff;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>盒子模型由4部分组成 最外面的是外边距margin 然后是边框border 然后是内边距padding 最后是内容content</div>
+    <div>盒子模型的大小height(width)+border+padding</div>
+    <p class="demo1">如果没有指定盒子的高宽 则padding不会撑开盒子 自动缩减content高宽</p>
+    <p class="demo2">指定了宽度是100% padding撑开了盒子</p>
+
+</body>
+
+</html>

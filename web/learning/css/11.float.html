@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>11.float</title>
+    <style>
+        .demo1 {
+            width: 200px;
+            border: 1px solid blue;
+
+        }
+
+        .demo1>div {
+            float: left;
+            width: 100px;
+            height: 100px;
+            background-color: yellowgreen;
+        }
+
+        .demo2 {
+            width: 200px;
+            height: 200px;
+            background-color: rgb(173, 146, 146);
+        }
+
+        .clear {
+            clear: both;
+        }
+
+        .overflow {
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 当父盒子高度为0时 由于子盒子浮动不占有位置 不能撑开父盒子 -->
+    <!-- 导致父盒子被压缩成一条线 同时影响到下面的标准流盒子 -->
+    <div class="demo1">
+        <div>float1</div>
+        <div>float2</div>
+    </div>
+    <div class="demo2">占据了上一个盒子的位置</div>
+
+    <!-- 但很多情况下 父盒子不便给高度(比如视频下滑不断刷出) 为不影响下面的标准流盒子 所以需要清除浮动 -->
+    <!-- 清除浮动之后 父元素就可以自动检测高度 -->
+
+    <!-- 1.在最后一个非行内浮动元素后面添加属性clear -->
+    <div class="demo1">
+        <div>float1</div>
+        <div>float2</div>
+    </div>
+    <div class="demo2 clear">父盒子没高度 但没影响后续布局</div>
+
+    <!-- 2.为父盒子添加overflow属性 -->
+    <div class="demo1 overflow">
+        <div>float1</div>
+        <div>float2</div>
+    </div>
+    <div class="demo2 clear">父盒子有高度 但没影响后续布局</div>
+</body>
+
+</html>

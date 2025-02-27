@@ -1,0 +1,26 @@
+enter和esc相互切换命令模式和编辑模式
+命令模式：
+H：显示快捷键帮助
+F：查找和替换
+P：打开命令面板
+Ctrl-Enter：运行当前cell
+Shift-Enter：运行当前cell并跳转到下一cell
+Alt-Enter：运行当前cell并在下方新建cell
+Y：把当前cell内容转换为代码形式
+M：把当前cell内容转换为markdown形式
+1~6：把当前cell内容设置为标题1~6格式
+Shift+上下键：按住Shift进行上下键操作可复选多个cell
+A：在上方新建cell
+B：在下方新建cell
+X/C/Shift-V/V：剪切/复制/上方粘贴/下方粘贴
+双击D：删除当前cell
+Z：撤销删除
+S：保存notebook
+L：为当前cell的代码添加行编号
+Shift-L：为所有cell的代码添加行编号
+Shift-M：合并所选cell或合并当前cell和下方的cell
+双击I：停止kernel
+双击0：重启kernel
+Alt+Shift+F：格式化
+切割单元格ctrl,K + ctrl,shift,\
+用！可以在单元格中运行shell命令，如！pip list

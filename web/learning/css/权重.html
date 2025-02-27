@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>权重</title>
+    <style>
+        /* 权重是0011 */
+        .nav li {
+            color: yellowgreen
+        }
+
+        /* 权重是0010 */
+        .pink {
+            color: pink;
+        }
+
+        body {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div>选择器相同则执行层叠性(后浪拍前浪)</div>
+    <div>选择器不同 则根据选择器权重执行</div>
+    <div>继承(无论父元素的权重有多高)或者*&lt;元素选择器&lt;类(伪类选择器)&lt;id选择器&lt;行内选择器&lt;!important</div>
+    <div>它们的权重分别是0001 0010 0100 1000和正无穷</div>
+    <div>权重具有叠加性 组合选择器的权重可以相加</div>
+    <ul class="nav">
+        <li class="pink">2333</li>
+        <li>2333</li>
+        <li>2333</li>
+        <li>2333</li>
+    </ul>
+    <a href="#">浏览器自动为a标签添加样式a{color:blue} 大于继承自body的css</a>
+</body>
+
+</html>

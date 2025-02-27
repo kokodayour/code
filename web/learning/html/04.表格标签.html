@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>04.表格标签</title>
+</head>
+
+<body>
+    table是表格标签 <br>
+    tr是table row缩写 <br>
+    th是table head缩写 <br>
+    td是table data缩写 <br>
+    表格由多行(tr)组成 每一行由多个数据(td)组成 <br>
+    第一行比较的特殊 由表头(th)组成 <br>
+    <table align="center" border="1" cellpadding="0" cellspacing="0" width="500" height="249">
+        <tr>
+            <th>姓名</th>
+            <th>年龄</th>
+        </tr>
+        <tr>
+            <td>张三</td>
+            <td>18</td>
+        </tr>
+        <tr>
+            <td>李四</td>
+            <td>22</td>
+        </tr>
+        <tr>
+            <td>王五</td>
+            <td>35</td>
+        </tr>
+    </table>
+    合并单元格 <br>
+    <table width="500" height="249" border="1" cellspacing="0">
+        <tr>
+            <td></td>
+            <td colspan="2"></td>
+
+        </tr>
+        <tr>
+            <td rowspan="2"></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+
+            <td></td>
+            <td></td>
+        </tr>
+
+    </table>
+</body>
+
+</html>

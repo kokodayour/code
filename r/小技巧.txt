@@ -1,0 +1,13 @@
+ctrl+l清除控制台
+alt+-打出箭头
+ctrl+上下箭头历史代码
+alt+shift+k打开快捷键
+esc退出
+
+R路径\要换成/或者\\
+na.rm 是否忽略缺失值
+is.na(x) 判断x是否为na
+ctrl+shift+s运行全部代码 且只显示打印的输出
+ctrl+shift+c注释
+提示中蓝色是函数 红色是参数
+编辑器中白色是参数 橙色是函数

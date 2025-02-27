@@ -1,0 +1,7 @@
+shift+方向键: 选择多行
+ctrl+pg up/down: 切换标签页
+ctrl+[]: 消除(增加)缩进
+alt+shift+a: 多行注释
+
+css peak：
+将鼠标悬停在标签的类名上 按住ctrl即可显示css样式 左键点击跳转到相应的css文件

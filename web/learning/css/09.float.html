@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>09.float</title>
+    <style>
+        div {
+            height: 100px;
+            width: 100px;
+            background-color: #25e793;
+        }
+
+        .left {
+            /* 创建浮动框 将其移动到一边 直到左边缘或右边缘触及包含快或另一个浮动框的边缘 */
+            float: left;
+        }
+
+        .right {
+            float: right;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 浮动最典型的应用: 可以让多个块级元素一行内排列显示 -->
+    <!-- 网页布局第一准则: 多个块级元素纵向排列标准流 横向排列找浮动 -->
+    <div class="left">左盒子</div>
+    <div class="right">右盒子</div>
+
+</body>
+
+</html>
