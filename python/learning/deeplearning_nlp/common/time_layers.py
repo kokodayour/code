@@ -12,9 +12,8 @@ class RNN:
 
     def forward(self, x, h_prev):
         Wx, Wh, b = self.params
-        t = np.dot(h_prev, Wh) + np.dot(x, Wx) + b
-        h_next = np.tanh(t)
-
+        # 正向传播
+        h_next = np.tanh(h_prev@Wh + x@Wx + b)
         self.cache = (x, h_prev, h_next)
         return h_next
 
