@@ -1,14 +1,20 @@
-def longestConsecutive(nums: list[int]) -> int:
-    nums = set(sorted(nums))
-    ans = temp = 1
-    for x in nums:
-        if x+1 not in nums:
-            ans = max(ans, temp)
-            temp = 1
+def subarraySum(nums: list[int], k: int) -> int:
+    L = R = ans = 0
+    n = len(nums)
+    temp = nums[0]
+    while L < n:
+        if temp < k:
+            R += 1
+            temp += nums[R]
+        elif temp > k:
+            temp -= nums[L]
+            L += 1
+            if L > R:
+                R = L
         else:
-            temp += 1
-    return 0 if nums == set() else ans
+            ans += 1
+    return ans
 
-nums = [0,3,7,2,5,8,4,6,0,1]
-nums = [0,-1]
-longestConsecutive(nums)
+nums = [1,2,3]
+k = 3
+subarraySum(nums, k)
