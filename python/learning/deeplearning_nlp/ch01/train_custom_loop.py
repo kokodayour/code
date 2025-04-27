@@ -1,11 +1,11 @@
 # coding: utf-8
+from two_layer_net import TwoLayerNet
+import matplotlib.pyplot as plt
+from dataset import spiral
+from common.optimizer import SGD
+import numpy as np
 import sys
 sys.path.append('..')  # 为了引入父目录的文件而进行的设定
-import numpy as np
-from common.optimizer import SGD
-from dataset import spiral
-import matplotlib.pyplot as plt
-from two_layer_net import TwoLayerNet
 
 
 # 设定超参数
@@ -46,8 +46,7 @@ for epoch in range(max_epoch):
         # 定期输出学习过程
         if (iters+1) % 10 == 0:
             avg_loss = total_loss / loss_count
-            print('| epoch %d |  iter %d / %d | loss %.2f'
-                  % (epoch + 1, iters + 1, max_iters, avg_loss))
+            print('| epoch %d |  iter %d / %d | loss %.2f' % (epoch + 1, iters + 1, max_iters, avg_loss))
             loss_list.append(avg_loss)
             total_loss, loss_count = 0, 0
 

@@ -1,11 +1,12 @@
 # coding: utf-8
-import sys, os
+from collections import OrderedDict
+from common.gradient import numerical_gradient
+from common.layers import *
+import numpy as np
+import sys
+import os
 
 sys.path.append(os.pardir)  # 为了导入父目录的文件而进行的设定
-import numpy as np
-from common.layers import *
-from common.gradient import numerical_gradient
-from collections import OrderedDict
 
 
 class TwoLayerNet:
@@ -37,14 +38,15 @@ class TwoLayerNet:
     def accuracy(self, x, t):
         y = self.predict(x)
         y = np.argmax(y, axis=1)
-        if t.ndim != 1: t = np.argmax(t, axis=1)
+        if t.ndim != 1:
+            t = np.argmax(t, axis=1)
 
         accuracy = np.sum(y == t) / float(x.shape[0])
         return accuracy
 
     # x:输入数据, t:监督数据
     def numerical_gradient(self, x, t):
-        loss_W = lambda W: self.loss(x, t)
+        def loss_W(W): return self.loss(x, t)
 
         grads = {}
         grads['W1'] = numerical_gradient(loss_W, self.params['W1'])
