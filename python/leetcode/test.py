@@ -1,20 +1,18 @@
-def subarraySum(nums: list[int], k: int) -> int:
-    L = R = ans = 0
-    n = len(nums)
-    temp = nums[0]
-    while L < n:
-        if temp < k:
-            R += 1
-            temp += nums[R]
-        elif temp > k:
-            temp -= nums[L]
-            L += 1
-            if L > R:
-                R = L
-        else:
-            ans += 1
+from itertools import accumulate
+def maxSubArray(nums: list[int]) -> int:
+    pre_sum = list(accumulate(nums, initial=0))
+    ptr = 0
+    min_val = pre_sum[ptr]
+    n = len(pre_sum)
+    ans = pre_sum[1]
+    while ptr < n-1:
+        while nums[ptr+1] > nums[ptr] and ptr < n-1:
+            ptr+=1
+        ans = max(nums[ptr] - min_val, ans)
+        ptr += 1
+        min_val = nums[ptr]
     return ans
 
-nums = [1,2,3]
-k = 3
-subarraySum(nums, k)
+# nums = [5,4,-1,7,8]
+nums = [-2,1,-3,4,-1,2,1,-5,4]
+maxSubArray(nums)
