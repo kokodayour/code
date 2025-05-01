@@ -6,7 +6,7 @@ def maxSubArray(nums: list[int]) -> int:
     n = len(pre_sum)
     ans = pre_sum[1]
     while ptr < n-1:
-        while nums[ptr+1] > nums[ptr] and ptr < n-1:
+        while pre_sum[ptr+1] > pre_sum[ptr] and ptr < n-1:
             ptr+=1
         ans = max(nums[ptr] - min_val, ans)
         ptr += 1
