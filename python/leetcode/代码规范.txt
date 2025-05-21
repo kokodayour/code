@@ -4,6 +4,10 @@
 迭代元素: x
 迭代下标: i
 数组长度: n
+计数: cnt
 前缀和: pre_sum
 后缀和: suf_sum
 查询: lookup
+当前指针: cur
+哨兵: dummy
+辅助函数: f
