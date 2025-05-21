@@ -16,9 +16,9 @@ class TreeNode:
         while queue:
             node: TreeNode = queue.popleft() # 从左侧移除一个元素并返回
             res.append(node.val)
-            if node.left is not None:
+            if node.left:
                 queue.append(node.left)
-            if node.right is not None:
+            if node.right:
                 queue.append(node.right)
         return res
 
@@ -34,7 +34,7 @@ class TreeNode:
         return result
 
     # 中序遍历: 左子树 -> 中节点 -> 右子树
-    def preorder_traversal(self):
+    def inorder_traversal(self):
         result = []
         def helper(node):
             if node:
@@ -45,7 +45,7 @@ class TreeNode:
         return result
 
     # 后序遍历: 左子树 -> 右子树 -> 中节点
-    def preorder_traversal(self):
+    def postorder_traversal(self):
         result = []
         def helper(node):
             if node:  
@@ -88,3 +88,4 @@ n1.left = p
 p.left = n2
 # 删除节点p
 n1.left = n2
+
