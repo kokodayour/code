@@ -1,18 +1,47 @@
-from itertools import accumulate
-def maxSubArray(nums: list[int]) -> int:
-    pre_sum = list(accumulate(nums, initial=0))
-    ptr = 0
-    min_val = pre_sum[ptr]
-    n = len(pre_sum)
-    ans = pre_sum[1]
-    while ptr < n-1:
-        while pre_sum[ptr+1] > pre_sum[ptr] and ptr < n-1:
-            ptr+=1
-        ans = max(nums[ptr] - min_val, ans)
-        ptr += 1
-        min_val = nums[ptr]
-    return ans
+def calculate(s):
+    nums, ops = [0], []
+    lookup = {
+        '+': lambda x1, x2: x1 + x2,
+        '-': lambda x1, x2: x1 - x2
+    }
 
-# nums = [5,4,-1,7,8]
-nums = [-2,1,-3,4,-1,2,1,-5,4]
-maxSubArray(nums)
+    def calc():
+        b = nums.pop()
+        a = nums.pop()
+        op = ops.pop()
+        nums.append(lookup[op](a, b))
+
+    s = s.replace(' ', '')
+    i, n = 0, len(s)
+    while i < n:
+        x = s[i]
+        if x == '(':
+            ops.append(x)
+        # 处理多位数
+        elif x.isdigit():
+            u, j = 0, i
+            while j < n and s[j].isdigit():
+                u = u * 10 + int(s[j])
+                j += 1
+            nums.append(u)
+            i = j - 1
+        elif x in ['+', '-']:
+            if i > 0 and s[i - 1] == '(':
+                nums.append(0)
+            while ops and ops[-1] != '(':
+                calc()
+            ops.append(x)
+        # 右括号
+        else:
+            while ops and ops[-1] != '(':
+                calc()
+            if ops:
+                ops.pop()
+        i += 1
+    while ops:
+        calc()
+    return nums.pop()
+
+
+s = "2 + (1+1) +1"
+calculate(s)
