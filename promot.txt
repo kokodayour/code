@@ -1,0 +1,61 @@
+一、科研选题与方向确认
+1). 头脑风暴选题指令： Brainstorm potential research topics within [你的研究领域], focusing on areas with limited existing research and significant potential impact. For each topic, provide a concise explanation of its relevance, potential challenges, and anticipated outcomes. Consider interdisciplinary approaches and emerging trends within the field.中文翻译： 在[你的研究领域]内，集思广益，找出一些潜在的研究课题，重点关注现有研究有限且具有重大潜在影响的领域。对于每个课题，简要解释其相关性、潜在挑战和预期成果。考虑跨学科方法和该领域的新兴趋势。
+
+2). 分析研究方向指令： Analyze the existing literature on [特定研究方向], identifying key research gaps and unresolved questions. Propose several specific, measurable, achievable, relevant, and time-bound (SMART) research questions that could address these gaps, along with a brief justification for each.中文翻译： 分析关于[特定研究方向]的现有文献，找出关键的研究空白和未解决的问题。提出几个具体的、可衡量的、可实现的、相关的、有时限的(SMART)研究问题，以解决这些差距，并对每个问题进行简要论证。
+
+3). 评估研究想法指令： Critically evaluate the feasibility and potential impact of the following research idea: [你的研究想法]. Consider factors such as resource availability, ethical implications, technical limitations, and potential contributions to the field. Provide a SWOT analysis (Strengths, Weaknesses, Opportunities, Threats) to comprehensively assess the research idea.中文翻译： 批判性地评估以下研究想法的可行性和潜在影响：[你的研究想法]。考虑资源可用性、伦理意义、技术限制以及对该领域的潜在贡献等因素。提供SWOT分析（优势、劣势、机会、威胁），以全面评估研究想法。
+
+二、文献综述与整理
+4). 总结文献关键信息指令： Summarize the key findings, methodologies, limitations, and contributions of the following papers: [列出文献链接或DOI]. Organize the summary thematically, highlighting common themes and contrasting perspectives across the selected papers.中文翻译： 总结以下论文的主要发现、方法、局限性和贡献：[列出文献链接或DOI]。按主题组织总结，突出所选论文的共同主题和对比观点。
+
+5). 查找高影响力文献指令： Identify the most influential and impactful papers published in the last 5 years on [你的研究主题]. Consider metrics such as citation count, journal impact factor, and altmetrics. Provide a brief analysis of why these papers are considered influential.中文翻译： 确定过去5年发表的关于[你的研究主题]的最有影响力和最有冲击力的论文。考虑诸如引用次数、期刊影响因子和替代指标等指标。简要分析为什么这些论文被认为具有影响力。
+
+6). 创建文献综述大纲指令： Create a detailed literature review outline for a paper on [你的研究主题], including key themes, subtopics, and relevant supporting literature for each. Structure the outline logically to provide a coherent narrative and demonstrate the progression of research in the field.中文翻译： 为一篇关于[你的研究主题]的论文创建一个详细的文献综述大纲，包括关键主题、子主题以及每个主题的相关支持文献。按照逻辑构建大纲，以提供连贯的叙述并展示该领域研究的进展。
+
+7). 建议研究方法指令： Suggest appropriate research methods and experimental designs for investigating [你的研究问题], taking into account the nature of the research question, available resources, and ethical considerations. Provide a rationale for the chosen methods and discuss potential limitations.中文翻译： 建议用于调查[你的研究问题]的合适研究方法和实验设计，同时考虑到研究问题的性质、可用资源和伦理考虑。提供选择这些方法的基本原理并讨论潜在的局限性。
+
+8). 设计实验指令： Design a robust experiment to test the hypothesis that [你的假设]. Include detailed information on the experimental setup, materials and methods, data collection procedures, statistical analysis plan, and anticipated results. Address potential confounding variables and control measures.中文翻译： 设计一个稳健的实验来检验[你的假设]。包括实验设置、材料和方法、数据收集程序、统计分析计划和预期结果的详细信息。解决潜在的混杂变量和控制措施。
+
+9). 评估研究方法优缺点指令： Critically evaluate the strengths and weaknesses of using [特定研究方法] for [你的研究问题]. Compare and contrast this method with alternative approaches, considering factors such as validity, reliability, cost-effectiveness, and ethical implications.中文翻译： 批判性地评估使用[特定研究方法]解决[你的研究问题]的优势和劣势。将此方法与其他方法进行比较和对比，考虑诸如有效性、可靠性、成本效益和伦理影响等因素。
+
+10). 数据分析指令： Analyze the following data [粘贴你的数据] and identify any statistically significant trends, patterns, or correlations. Provide visualizations (e.g., graphs, charts) to illustrate the findings and interpret their meaning in the context of the research question.中文翻译： 分析以下数据[粘贴你的数据]，并识别任何具有统计学意义的趋势、模式或相关性。提供可视化（例如，图表）来说明研究结果，并在研究问题的背景下解释其含义。
+
+11). 实验结果解读指令： Interpret the results of the following experiment: [描述你的实验和结果]. Discuss the implications of the findings, considering both supporting and contradictory evidence from the existing literature. Address potential limitations and suggest future research directions.中文翻译： 解释以下实验的结果：[描述你的实验和结果]。讨论研究结果的含义，同时考虑现有文献中的支持和矛盾证据。解决潜在的局限性并建议未来的研究方向。
+
+12). 讨论研究意义指令： Discuss the broader implications of these findings for [你的研究领域]. Explore potential applications, theoretical contributions, and practical implications of the research. Consider the impact on policy, practice, and future research endeavors.中文翻译： 讨论这些发现对[你的研究领域]的更广泛的含义。探讨研究的潜在应用、理论贡献和实际意义。考虑对政策、实践和未来研究工作的影响。
+
+13). 撰写摘要指令： Write a concise and informative abstract for a research paper on [你的研究主题], summarizing the research question, methodology, key findings, and implications. Adhere to the word limit and formatting guidelines of the target journal.中文翻译： 为一篇关于[你的研究主题]的研究论文撰写一个简洁而翔实的摘要，总结研究问题、方法、主要发现和含义。遵守目标期刊的字数限制和格式指南。
+
+14). 撰写引言指令： Generate a compelling and engaging introduction for a research paper on [你的研究主题], clearly stating the research gap, research question, and the significance of the study. Provide relevant background information and establish the context for the research.中文翻译： 为一篇关于[你的研究主题]的研究论文撰写一个引人入胜且引人入胜的引言，清晰地陈述研究差距、研究问题和研究的意义。提供相关的背景信息，并为研究建立背景。
+
+15). 改进段落指令： Improve the clarity, conciseness, and overall quality of the following paragraph: [粘贴你的段落]. Ensure the language is precise, the sentences are well-structured, and the flow of ideas is logical.中文翻译： 提高以下段落的清晰度、简洁性和整体质量：[粘贴你的段落]。确保语言准确，句子结构良好，思想流程合乎逻辑。
+
+16). 改写句子指令： Paraphrase the following sentence to avoid plagiarism while retaining the original meaning: [粘贴你的句子]. Ensure the paraphrased sentence is grammatically correct and uses appropriate academic vocabulary.中文翻译： 改写以下句子以避免剽窃，同时保留其原始含义：[粘贴你的句子]。确保改写后的句子语法正确，并使用适当的学术词汇。
+
+17). 建议论文标题指令： Suggest a concise and informative title for a research paper based on the following findings: [描述你的研究发现]. The title should accurately reflect the content of the paper and capture the reader's attention.中文翻译： 根据以下研究结果，建议一个简洁明了的研究论文标题：[描述你的研究发现]。标题应准确反映论文的内容并吸引读者的注意力。
+
+18). 生成关键词指令： Generate a list of relevant keywords for a research paper on [你的研究主题]. These keywords should facilitate discoverability and indexing of the paper in academic databases.中文翻译： 生成与[你的研究主题]相关的关键词列表。这些关键词应有助于在学术数据库中发现和索引论文。
+
+19). 撰写结论指令： Write a comprehensive conclusion for a research paper on [你的研究主题], summarizing the key findings, limitations, and future research directions. Restate the research question and highlight the contributions of the study.中文翻译： 为一篇关于[你的研究主题]的研究论文撰写一个全面的结论，总结主要发现、局限性和未来的研究方向。重申研究问题并强调研究的贡献。
+
+20). 创建讨论部分大纲指令： Create a well-structured outline for the discussion section of a research paper on [你的研究主题], including key points, supporting evidence, and connections to the existing literature.中文翻译： 为一篇关于[你的研究主题]的研究论文的讨论部分创建一个结构良好的大纲，包括要点、支持证据以及与现有文献的联系。
+
+21). 论证研究意义指令： Develop a compelling argument for the significance of your research on [你的研究主题], highlighting its potential impact on the field and its contribution to knowledge.中文翻译： 对你在[你的研究主题]上的研究的重要性进行有力的论证，强调其对该领域的潜在影响及其对知识的贡献。
+
+22). 改进论文章节指令： Refine the following section of your research paper to enhance its logical flow and coherence: [粘贴你的部分].中文翻译： 修改你研究论文的以下部分，以增强其逻辑流程和连贯性：[粘贴你的部分]。
+
+23). 识别方法论缺陷指令： Identify potential weaknesses in your research methodology and suggest ways to address them in future studies.中文翻译： 找出你研究方法中潜在的弱点，并建议在未来的研究中解决这些弱点的方法。
+
+24). 制定研究假设指令： Formulate a research hypothesis based on the following observations: [描述你的观察].中文翻译： 根据以下观察结果制定研究假设：[描述你的观察]。
+
+25). 撰写研究计划指令： Develop a research proposal for a study on [你的研究主题], including a detailed budget and timeline.中文翻译： 制定一项关于 [你的研究主题] 的研究计划，包括详细的预算和时间表。
+
+26). 识别伦理问题指令： Identify potential ethical considerations related to your research on [你的研究主题] and propose strategies for mitigating them.中文翻译： 识别与你关于 [你的研究主题] 的研究相关的潜在伦理考虑，并提出缓解这些问题的策略。
+
+27). 定义关键术语指令： Write a clear and concise definition of [一个与你的研究相关的关键术语].中文翻译： 对 [一个与你的研究相关的关键术语] 写一个清晰简洁的定义。
+
+28). 翻译摘要指令： Translate the following abstract into [目标语言]: [粘贴你的摘要].中文翻译： 将以下摘要翻译成 [目标语言]：[粘贴你的摘要]。
+
+29). 推荐投稿期刊指令： Generate a list of potential journals to submit your research paper on [你的研究主题], considering their scope, impact factor, and audience.中文翻译： 生成一份可以提交你关于 [你的研究主题] 的研究论文的潜在期刊列表，同时考虑其范围、影响因子和读者群。
+
+30). 撰写投稿信指令： Write a cover letter to accompany your research paper submission, highlighting the key contributions and novelty of your work.中文翻译： 写一封附在你研究论文提交材料中的投稿信，重点介绍你工作的关键贡献和新颖性。
