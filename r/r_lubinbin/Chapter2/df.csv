@@ -1,0 +1,6 @@
+x....c.1..NA..2..3..NA.,y....c..A....B....C...NA...D..,z....c.TRUE..FALSE..TRUE..TRUE..NA.
+1,A,TRUE
+NA,B,FALSE
+2,C,TRUE
+3,NA,TRUE
+NA,D,NA
