@@ -1,0 +1,28 @@
+data(iris)#加载数据  
+head(iris)#查看数据的前6行  
+#summary(iris)#数据摘要  
+x <- iris[, 1:4]  
+group <- as.numeric(iris$Species)
+
+library(energy)
+energy::mvnorm.test(x[group==1,1:4], R = 199)  
+energy::mvnorm.test(x[group==2,1:4], R = 199)  
+energy::mvnorm.test(x[group==3,1:4], R = 199)  
+
+
+
+index1 <- which(group==1)  
+dat_new <- iris[-index1 , ]  
+group_new <- as.numeric(dat_new[, 5]) -1  
+mcov.test(x=dat_new[, 1:4], group=group_new)  
+
+
+index1_new <- which(group_new==1)  
+xx <- dat_new[index1_new, 1:4]  
+index2_new <- which(group_new==2)  
+yy <- dat_new[index2_new, 1:4]  
+apply(xx, 2, mean)  
+apply(yy, 2, mean)  
+hotelT2.dif(x=xx, y=yy)  
+
+

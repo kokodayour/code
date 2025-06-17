@@ -1,0 +1,30 @@
+﻿	mcov.test=function(x, group){  
+	  x <- as.matrix(x)  
+	  p <- ncol(x)   
+	  n <- nrow(x)   
+	  group.index <- unique(group)  
+	  r  <- length(group.index)  
+	  ni <- as.vector(table(group))  
+	  Li <- array(dim=c(p,p, r))  
+	  for (i in 1:r)  Li[ , , i] <- (ni[i]-1) * cov(x[group ==i,])   
+	  L   <- apply(Li,1:2,sum)  
+	  nrL <- (n-r) * log( det(L/ (n-r)) )   
+	  niL <- 0  
+	  for(k in 1:r){  
+	    niL <-  niL + (ni[k] - 1) * log(det( Li[ , , k]/(ni[k] - 1) ))  
+	  }  
+	  M <- nrL - niL  
+	  if(length(unique(ni))==1){  
+	    d1 <- (2*p^2 + 3*p -1) * (r+1) / (6*(p+1)*(n-r))   
+	    d2 <- (p-1)*(p+2)*(r^2+r+1)/ (6*(n-r)^2)  
+	  }else{  
+	    d1 <- (2*p^2 + 3*p -1)/ (6*(p+1)*(r-1)) * (sum(1/(ni-1)) - 1/(n-r))  
+	    d2 <- (p-1)*(p+2)/ (6*(r-1)) * (sum(1/(ni-1)^2)- 1/(n-r)^2)  
+	  }  
+	  f1 <- p * (p + 1) * (r - 1) / 2  
+	  f2 <- (f1 + 2) / (d2 - d1 ^ 2)  
+	  b  <- f1 / (1 - d1 - f1 / f2)  
+	  MDb <- M / b  
+	  pvalue=1 - pf(MDb, df1=f1, df2=f2)  
+	  return(list(M=M, df1=f1, df2=f2, p.value=pvalue))  
+	}

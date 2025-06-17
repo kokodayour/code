@@ -1,0 +1,23 @@
+rm(list=ls())  
+ex3.4 <- read.table("例3-4.txt", head=TRUE, fileEncoding="utf8")  
+dat34 <- ex3.4[, -1]  
+rownames(dat34) <- ex3.4[, 1]  
+head(dat34)  
+#计算欧式矩阵  
+dat34_dist < dist(dat34, method = "euclidean", diag = TRUE, upper = FALSE) 
+print(dat34_dist, digits = 5)  
+#图3-6  
+dat34_single <- hclust(dat34_dist, method="single")  
+plot(dat34_single)   
+#图3-7  
+dat34_complete <- hclust(dat34_dist, method="complete")  
+plot(dat34_complete)   
+#图3-8  
+dat34_centroid <- hclust(dat34_dist, method="centroid")  
+plot(dat34_centroid)   
+#图3-9  
+dat34_average <- hclust(dat34_dist, method="average")  
+plot(dat34_average)   
+#图3-10  
+dat34_ward <- hclust(dat34_dist, method="ward.D")  
+plot(dat34_ward) 

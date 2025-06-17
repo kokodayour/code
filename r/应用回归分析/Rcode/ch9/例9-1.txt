@@ -1,0 +1,17 @@
+rm(list=ls())  
+library(MASS)  
+ex9.1 <- read.table("例9-1.txt", head=TRUE, fileEncoding="utf8")  
+fit <- MASS::loglm(频数~收入情况+满意情况+收入情况*满意情况, data=ex9.1, param=T,fit=T)  
+#模型的拟合优度检验  
+fit  
+#估计的系数  
+coef(fit)  
+
+
+
+
+
+
+
+
+

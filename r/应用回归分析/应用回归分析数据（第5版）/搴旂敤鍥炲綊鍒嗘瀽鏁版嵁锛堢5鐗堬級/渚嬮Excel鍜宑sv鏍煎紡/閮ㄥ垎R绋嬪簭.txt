@@ -1,0 +1,92 @@
+注：把所需的数据文件存放在D盘根目录下，把以下相应的程序粘贴到R软件中即可运行。
+
+
+例4.6  续例4.3，对表4-1财政收入和地区生产总值数据，用BOX-COX变换消除异方差的影响。
+表4-1数据，先用Excel生成csv格式的数据文件，文件第一行是变量名称，本例数据财政收入和地区生产总值数据的变量名称就简记为y和x。其中数据是剔除北京和上海两个城市的数据，实际样本量是29。假设数据文件名是li4.3，存放在D盘根目录下，则R语言的命令如下：
+
+install.packages("MASS")   #安装MASS 包，只需要下载一次，下次使用不用重新下载
+library(MASS)          #加载MASS 包，每次启动R要重新加载
+data4.3<-read.csv("D:/li4.3.csv",head = TRUE) 
+#读入数据文件并赋给data4.3，head = TRUE表示数据第一行是变量名称
+data4.3  #显示数据
+
+re4.3<-boxcox(y~x,data = data4.3,lambda = seq(-3,3,0.1))
+#参数λ在区间[-3,3]上以步长为0.1 取值，re4.3中保存了λ和对应的对数似然函的数值
+lambda<- re4.3$x[which.max(re4.3$y)]   #将使对数似然函数值达到最大的λ赋给lambda
+lambda   #显示lambda的数值
+
+
+
+例4.7  以下对例2.2数据用BOX-COX 变换消除残差序列自相关。
+
+library(MASS)          #加载已经安装过的MASS 包 
+data2.2<-read.csv("D:/li2.2.csv",head = TRUE) 
+#读入例2.2数据文件并赋给data2.2，head = TRUE表示数据第一行是变量名称
+data2.2 #显示数据
+
+re4.7<-boxcox(y~x,data = data2.2,lambda = seq(-2,2,0.1))
+lambda<- re4.7$x[which.max(re4.7$y)]
+lambda
+
+
+例5.2  
+对例3.1的数据，用调整的复判定系数 准则选择最优子集回归模型。
+
+R计算代码 
+
+install.packages("leaps")   #下载leaps 包
+data3.1<-read.csv("D:/li3.1.csv",head = TRUE) #数据文件第1行是变量名称y，x1-x9
+data3.1 # 显示数据
+library(leaps)   #加载leaps 包
+exps<-regsubsets(y~x1+x2+x3+x4+x5+x6+x7+x8+x9,data = data3.1,nbest = 1,really.big = T) 
+#用regsubsets函数做子集回归赋值给exps，参数nbest = 1表示对每个p值只输出1个最优子集
+expres<-summary(exps) #将回归结果赋值给expres
+res<-data.frame(expres$outmat, adjr2 = expres$adjr2) 
+#把expres 中的adjusted R Square准则计算结果赋值给res
+res  #输出res
+
+
+例5.3  
+在R中继续前面的计算过程，用Cp准则寻找最优子集。输入命令：
+data.frame(expres$outmat,Cp = expres$cp)
+
+再用BIC准则寻找最优子集。输入命令：
+data.frame(expres$outmat,BIC = expres$bic)
+
+
+例8.2 用R计算偏最小二乘
+
+install.packages("pls")  #安装pls 包
+data8.2<-read.csv('D:/li8.2.csv')  #读入数据文件数，据赋值给data8.2
+data8.2 # 显示数据
+datas<-data.frame(scale(data8.2)) #对数据标准化
+library(pls)    #加载pls 包
+pls1<-plsr(y~.,data=datas,validation="LOO")
+#建立偏最小二乘法回归模型，validation="LOO"表示使用留一交叉验证计算RMSEP。
+summary(pls1,what="all") #输出回归结果。
+
+
+
+例7.4 对li3.3民航客运量数据作岭回归的SPSS程序，其中ridge regression.sps程序被复制在了D:盘根目录下。
+          运行时可能会出现警告错误，但是不影响运算结果。
+
+include'D:\ridge regression.sps'.
+ridgereg dep=y/enter x1 x2 x3 x4 x5.
+
+ridgereg dep=y/enter x1 x2 x3 x4 x5
+/start=0.1/stop=0.3/INC=0.02.
+
+ridgereg dep=y/enter x1 x2 x3 x4 x5/k=0.2.
+
+
+
+
+
+
+
+
+
+
+
+
+

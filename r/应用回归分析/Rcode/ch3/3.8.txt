@@ -1,0 +1,28 @@
+####################################################例3-5  
+rm(list=ls())  
+ex3.5 <- read.table("例3-5.txt", head=TRUE, fileEncoding="utf8")  
+dat35 <- ex3.5[, -1]  
+round(cor(dat35),3)  #相关系数矩阵
+#图3-16  
+dat35_cor <- as.dist(1-cor(dat35))  
+dat35_cs <- hclust(dat35_cor, method="single")  
+par(mfrow=c(1,1))  
+plot(dat35_cs, hang = -1)  
+rect.hclust(dat35_cs, k = 4)  
+#计算距离矩阵  
+dat35_dist <- dist(dat35, method = "euclidean", diag = TRUE, upper = FALSE)  
+#类平均法  
+dat35_ave <- hclust(dat35_dist, method="average")  
+par(mfrow=c(1,1))  
+plot(dat35_ave, hang = -1)  
+rect.hclust(dat35_ave, k = 3)  
+#最短距离法  
+dat35_sin <- hclust(dat35_dist, method="single")  
+par(mfrow=c(1,1))  
+plot(dat35_sin, hang = -1)  
+rect.hclust(dat35_sin, k = 3)  
+#最长距离  
+dat35_com <- hclust(dat35_dist, method="complete")  
+rect.hclust(dat35_com, k = 3) 
+
+kmeans(dat35, centers = 3)  

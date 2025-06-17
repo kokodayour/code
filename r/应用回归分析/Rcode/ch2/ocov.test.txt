@@ -1,0 +1,12 @@
+﻿	ocov.test <- function(x, Sigma0){  
+	  x <- as.matrix(x)  
+	  Sigma0 <- as.matrix(Sigma0)  
+	  p <- ncol(x)   
+	  n <- nrow(x)  
+	  Sigma_hat <- cov(x)   
+	  SSS <- solve(Sigma0) %*%  Sigma_hat  
+	  m2log <- n * sum(diag(SSS)) - n * log(det(SSS)) - n * p  
+	  df <- p * (p + 1) / 2   
+	  pvalue <- 1 - pchisq(m2log, df)  
+	  return(list(m2kog=m2log, p.value=pvalue))  
+	} 

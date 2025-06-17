@@ -1,0 +1,70 @@
+rm(list=ls())  
+ex5.3 <- read.table("例5-3.txt", head=TRUE, fileEncoding="utf8")  
+dat53 <- ex5.3[, -1]  
+rownames(dat53) <- ex5.3[, 1]  
+dat53 <- scale(dat53, center = TRUE, scale = TRUE)  
+#协方差  
+sigm  <- cov(dat53)  
+print(sigm, digits=3)  
+
+
+my53  <- eigen(sigm)  
+#特征值  
+lam <- my53$values  
+p <- length(lam)  
+#方差解释  
+cumlam <- cumsum(lam)/sum(lam)  
+VE <- data.frame(lam, lam/sum(lam), cumlam)  
+colnames(VE) <- c("特征值","比例","累计比例")  
+print(VE,digits = 5)  
+
+
+#特征向量  
+gam <- my53$vectors  
+colnames(gam) <- paste("vec",sep = "", 1:p)  
+print(gam[, 1:2], digits = 4)  
+#因子负荷量  
+lam_ma <- matrix(lam, p, p,  byrow = TRUE)  
+sigmai <- (diag(sigm))^0.5   
+##特征向量*特征根的算数平方根  
+gamsla <- gam * sqrt(lam_ma)  
+load <- gamsla / sigmai  
+colnames(load) <- paste("load",sep = "", 1:p)  
+print(load[, 1:2], , digits = 4)  
+
+y1 <- dat53 %*% as.matrix(gam[, 1], p, 1)  
+y2 <- dat53 %*% as.matrix(gam[, 2], p, 1)  
+#data.frame(y1, y2)#表5-2  
+plot(y1, y2, pch="+", xlab = "第一主成分", ylab="第二主成分")  
+abline(h=0, lty=2)  
+abline(v=0, lty=2)    
+text(y1,y2, ex5.3[, 1], adj= -0.05) 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

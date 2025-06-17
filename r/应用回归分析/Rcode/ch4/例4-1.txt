@@ -1,0 +1,39 @@
+rm(list=ls())  
+library(MASS)  
+data(iris)  
+summary(iris)  
+
+iris.lda <- MASS::lda(iris$Species~., data=iris)  
+iris.lda  
+
+fit <- predict(iris.lda)  
+pred <- fit$class#预测值  
+tru <- iris$Species#真实值  
+table(tru,  pred )#误判个数  
+pred  
+tru          setosa versicolor virginica  
+setosa         50          0         0  
+versicolor      0         48         2  
+virginica       0          1        49  
+table(tru,  pred )/50#误判率  
+pred  
+tru          setosa versicolor virginica  
+setosa       1.00       0.00      0.00  
+versicolor   0.00       0.96      0.04  
+virginica    0.00       0.02      0.98  
+#画图比较  
+plot(fit$x, pch=as.numeric(iris$Species))  
+text(fit$x[,1], fit$x[,2], as.numeric(fit$class), adj=-0.5)  
+
+#分析判别函数和真实组的关系  
+ldahist(data =fit$x[,1], g=iris$Species)  
+ldahist(data =fit$x[,2], g=iris$Species)  
+#计算每组判别函数的均值  
+apply(fit$x[fit$class=="setosa", ], 2, mean)  
+
+
+
+
+
+
+

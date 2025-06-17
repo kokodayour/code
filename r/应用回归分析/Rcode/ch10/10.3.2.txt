@@ -1,0 +1,6 @@
+library(foreign)　#加载foreign包以便于下面调用read.spss()函数
+sdata<-read.spss("E:/例3-5.sav")　#读取例3-5的原始SPSS数据,数据中包含8个指标变量
+sdata<-as.data.frame(sdata)　#转换数据格式
+rownames(sdata)<-sdata[,1]　#数据的第一列为地区的名称,将其作为数据的行名
+sdata<-sdata[,-1]　#将数据的第一列删除,仅保留8个指标变量x1,x2,…,x8的数据
+stars(sdata,flip.labels=FALSE)　#画星图

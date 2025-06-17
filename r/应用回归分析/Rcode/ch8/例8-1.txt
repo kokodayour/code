@@ -1,0 +1,39 @@
+fit<-read.csv("E:/例8 1.csv",head=T)　#读取数据文件
+PHY<-fit[,1:3]　#将生理指标数据单独保存并命名为PHY
+EXER<-fit[,4:6]　#将运动指标数据单独保存并命名为EXER
+install.packages("CCA")　#安装做典型相关分析的包CCA
+library(CCA)　#加载CCA包
+matcor(PHY,EXER)
+# matcor()函数分别计算PHY和EXER的自相关矩阵以及两组变量的相关阵
+cc1<-cc(PHY,EXER)　#cc()是进行典型相关分析的函数
+cc1[1] #输出典型相关系数
+cc1[3:4] #输出原始典型系数
+cc1[5]　#输出典型变量得分及典型变量与原始变量的相关系数矩阵
+##　计算标准化典型系数即典型权重
+sdx<-sapply(PHY,function(x) sd(x))　　#计算生理指标各变量的标准差
+s1<-diag(sdx)　　　 #生成以sdx为对角线元素的对角矩阵
+s1%*% cc1$xcoef　　 #输出生理指标各变量的标准化典型系数
+sdy<-sapply(EXER,function(x) sd(x))　　#计算运动指标各变量的标准差
+s2<-diag(sdy)　　　#生成对角阵
+s2 %*% cc1$ycoef　 #输出运动指标各变量的标准化典型系数
+##　典型相关系数的显著性检验(根据8.1.2节中相应理论编写)
+ev<-cc1$cor^2　#cc1$cor是典型相关系数,其平方即为典型根
+ev2<-1-ev
+n<-dim(PHY)[1]　#将样本量赋值给n
+p<-length(PHY)　#将PHY所含变量的个数赋给p
+q<-length(EXER)　#将EXER所含变量的个数赋给q
+l<-length(ev)　#提取典型变量的个数
+m<-n -1 - (p+q+1)/2　
+w<-cbind(NULL)　#定义w以保存中间计算值
+for (i in 1:l){
+  w<-cbind(w,prod(ev2[i:l]))}
+d<-cbind(NULL)
+Q<-cbind(NULL)
+for (i in 1:l){
+  Q<-cbind(Q,-(m-(i-1))*log(w[i]))
+  d<-cbind(d,(p-i+1)*(q-i+1))}
+pvalue<-pchisq(Q,d,lower.tail=FALSE)　#计算卡方统计量对应的概率
+bat<-cbind(t(Q),t(d),t(pvalue))　#将统计量、自由度和相应的p值合在一起
+colnames(bat)<-c("Chi-Squared","df","pvalue")
+rownames(bat)<-c(seq(1:l))
+bat

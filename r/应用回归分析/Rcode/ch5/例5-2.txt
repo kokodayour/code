@@ -1,0 +1,50 @@
+rm(list=ls())  
+ex5.2 <- read.table("例5-2.txt", head=TRUE, fileEncoding="utf8")  
+dat52 <- ex5.2[, -1]  
+rownames(dat52) <- ex5.2[, 1]  
+dat52 <- scale(dat52, scale = TRUE, center = TRUE)  
+#协方差  
+sigm  <- cov(dat52)  
+print(sigm, digits=3)  
+
+my52  <- eigen(sigm)  
+#特征值  
+lam <- my52$values  
+p <- length(lam)  
+#方差解释  
+cumlam <- cumsum(lam)/sum(lam)  
+VE <- data.frame(lam, lam/sum(lam), cumlam)  
+colnames(VE) <- c("特征值","比例","累计比例")  
+print(VE,digits = 5)  
+
+#特征向量  
+gam <- my52$vectors  
+colnames(gam) <- paste("vec",sep = "", 1:p)  
+print(gam[, 1:2],  digits = 4)  
+#因子负荷量  
+lam_ma <- matrix(lam, p, p,  byrow = TRUE)  
+sigmai <- (diag(sigm))^0.5   
+##特征向量*特征根的算数平方根  
+gamsla <- gam * sqrt(lam_ma)  
+load <- gamsla / sigmai  
+colnames(load) <- paste("load",sep = "", 1:p)  
+print(load[, 1:2], digits = 4)  
+
+y1 <-  dat52 %*% as.matrix(-gam[, 1], p, 1)  
+index <- order(y1, decreasing = TRUE)  
+city <- as.character(ex5.2[,1])  
+data.frame(city[index], y1[index]) 
+
+
+
+
+
+
+
+
+
+
+
+
+
+

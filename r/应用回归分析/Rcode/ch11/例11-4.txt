@@ -1,0 +1,16 @@
+rm(list=ls())  
+ex11.4 <- read.table("例11-4.txt", head=TRUE, fileEncoding="utf8")  
+ex11.4 <- as.matrix(ex11.4)  
+n <- dim(ex11.4)[2]  
+cii <- diag(ex11.4)  
+cjj <- cii  
+cii_m <- matrix(rep(cii, times=n), n, n)  
+cjj_m <- matrix(rep(cjj, times=n), n, n,  byrow=TRUE)  
+D <- (cii_m + cjj_m - 2 *ex11.4) ^ 0.5  
+fit <- cmdscale(D, k=2, eig = TRUE)  
+round(fit$eig)  
+round(fit$points) 
+
+
+
+

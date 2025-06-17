@@ -1,0 +1,59 @@
+ex6.3 <- read.table("例6-3.txt", head=TRUE, fileEncoding="utf8")  
+dat63 <- ex6.3[, -1]  
+rownames(dat63) <- ex6.3[, 1]  
+dat63 <- scale(dat63, center = TRUE, scale = TRUE)  
+#检验  
+library(psych)  
+psych::KMO(dat63)  
+p <- dim(dat63)[2]  
+ocov.test(x=dat63, Sigma0=diag(p))  
+
+
+##########方差解释  
+fit63_var <- psych::principal(dat63, nfactors = 3, rotate = 'varimax', covar = TRUE)  
+lam63 <- fit63_var$values#特征值  
+#方差解释  
+cumlam63 <- cumsum(lam63)/sum(lam63)  
+VE63 <- data.frame(lam63, lam63/sum(lam63), cumlam63)  
+colnames(VE63) <- c("特征值","比例","累计比例")  
+round(VE63, 3)  
+#碎石图  
+plot(lam63, type="o", xlab="因子序号", ylab="特征值") 
+abline(h=1, lty=1)  
+abline(v=0, lty=1)    
+text(fit63_var$scores, ex6.3[, 1], adj= -0.05)
+
+
+	 
+
+
+
+
+
+
+
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

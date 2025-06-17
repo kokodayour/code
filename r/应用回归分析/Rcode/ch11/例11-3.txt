@@ -1,0 +1,15 @@
+rm(list=ls())  
+ex11.3 <- read.table("例11-1.txt", head=TRUE, fileEncoding="utf8")  
+fit <- cmdscale(ex11.3, k=2, eig = TRUE)  
+#特征根  
+round(fit$eig)  
+#a12  
+round(sum(fit$eig[1:2]) / sum(abs(fit$eig)) , 3)  
+#a22  
+round(sum((fit$eig[1:2])^2) / sum((fit$eig)^2), 3)   
+round(fit$points)  
+
+
+
+
+

@@ -1,0 +1,31 @@
+rm(list=ls())  
+library(MASS)   
+ex11.5 <- read.table("例11-5new.txt", head=TRUE, fileEncoding="utf8")[-3,]  
+dat115 <- ex11.5[, -1]  
+rownames(dat115) <- ex11.5[, 1]  
+head(dat115)  
+x1    x2      x3      x4  
+北京    10.3  12.5  2199.9 23965.7  
+天津    39.7  69.3 13741.2 35033.6  
+山西   113.4  37.1 17123.6 76671.8  
+内蒙古 131.9  66.0 13773.8 83545.5  
+辽宁   110.7 106.8   280.0 66970.0  
+吉林   161.1  63.7 17415.9 52581.1  
+#样本的距离矩阵  
+D <- dist(dat115)  
+fit115 <- MASS::isoMDS(D, k=2)  
+initial  value 0.000146   
+final  value 0.000146   
+converged  
+#fit115$points #系数  
+D1 <- fit115$points[, 1]  
+D2 <- fit115$points[, 2]  
+#画散点图  
+plot(D1, D2)  
+abline(v=0, h=0, lty=2)  
+text(D1, D2, labels=ex11.5[, 1]) 
+
+
+
+
+

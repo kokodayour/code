@@ -1,0 +1,13 @@
+rm(list=ls())  
+ex10.1 <- read.table("表3-7.txt", head=TRUE, fileEncoding="utf8")  
+colnames(ex10.1) <- c("id", "人均GDP","粗死亡率","粗出生率", "城镇人口比重", "平均期望寿命","65岁及以上人口比重" )  
+head(ex10.1)  
+plot(ex10.1[, -1]) 
+
+
+
+
+
+
+
+

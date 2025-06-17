@@ -1,0 +1,110 @@
+ex5.3 <- read.table("例5-3.txt", head=TRUE, fileEncoding="utf8")  
+dat53 <- ex5.3[, -1]  
+rownames(dat53) <- ex5.3[, 1]  
+dat53 <- scale(dat53, center = TRUE, scale = TRUE)  
+p <- dim(dat53)[2]  
+library(psych)  
+#建立模型  
+fit61 <- principal(dat53, nfactors = 2, rotate = 'none', covar = TRUE)  
+lam <- fit61$values#特征值  
+#方差解释  
+cumlam <- cumsum(lam)/sum(lam)  
+VE <- data.frame(lam, lam/sum(lam), cumlam)  
+colnames(VE) <- c("特征值","比例","累计比例")  
+round(VE, 3)  
+
+
+#因子载荷  
+load <- as.matrix.data.frame(fit61$loadings)  
+rownames(load) <- colnames(dat53)  
+round(load, 3)  
+#因子得分  
+varci <- fit61$Vaccounted[1, ]  
+varci_mat <- matrix(varci, p, 2,  byrow = TRUE)  
+score_mat <- load / varci_mat   
+rownames(score_mat) <- colnames(dat53)  
+round(score_mat, 3)  
+
+#协方差    
+sigm  <- cov(dat53)    
+round(sigm, 3)    
+#检验    
+psych::KMO(dat53)  
+ocov.test(x=dat53, Sigma0=diag(p))    
+
+
+fit61_var<- psych::principal(dat53, nfactors = 2, rotate = 'varimax', covar = TRUE)  
+#因子载荷  
+load_var <- as.matrix.data.frame(fit61_var$loadings)  
+rownames(load) <- colnames(dat53)  
+round(load_var, 3)  
+#旋转矩阵  
+fit61_var$rot.mat   
+##因子得分  
+xx <- t(dat53) %*% dat53  
+xy_var <- t(dat53) %*% fit61_var$scores  
+score_mat_var <- solve(xx) %*% xy_var  
+rownames(score_mat_var) <- colnames(dat53)  
+round(score_mat_var, digits=3)  
+
+fit61_pro <- psych::principal(dat53, nfactors = 2, rotate = 'promax', covar = TRUE)  
+# Pattern Matrix  
+load_pro <- as.matrix.data.frame(fit61_pro$loadings)  
+round(load_pro, 3)  
+#Structure Matrix  
+fit61_pro$Structure  
+score_mat_pro <- fit61_pro$scores  
+load_pro %*% cor(score_mat_pro)  
+
+summary(score_mat_pro)  
+apply(score_mat_pro, 2, sd)  
+plot(fit61_pro$scores, pch="+", xlab = "第一因子", ylab="第二因子")  
+abline(h=0, lty=2)  
+abline(v=0, lty=2)    
+text(fit61_pro$scores, ex5.3[, 1], adj= -0.05)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

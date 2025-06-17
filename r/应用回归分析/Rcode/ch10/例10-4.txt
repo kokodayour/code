@@ -1,0 +1,18 @@
+rm(list=ls())  
+ex10.4 <- read.table("例10-4.txt", head=TRUE, fileEncoding="utf8")  
+library(fmsb)   
+dat10.4 <- ex10.4[, -1]  
+rownames(dat10.4) <- ex10.4[, 1]  
+#雷达图的最大最小值  
+max_col <- apply(dat10.4, 2, max) + 1000   
+min_col <- apply(dat10.4, 2, min) - 1000  
+dat104 <- rbind(max_col, min_col, dat10.4)  
+radarchart(dat104, col=c(1, 2), lty=c(1,2), axistype=0, plwd=2,  seg=2)  
+legend(x=1, y=1,legend = ex10.4[,1], lty=c(1,2), col=c(1, 2),bty = "n") )  
+
+
+
+
+
+
+

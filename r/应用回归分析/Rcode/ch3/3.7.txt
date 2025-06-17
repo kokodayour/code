@@ -1,0 +1,37 @@
+rm(list=ls())  
+ex3.7 <- read.table("表3-7.txt", head=TRUE, fileEncoding="utf8")  
+dat37 <- ex3.7[, -1]  
+rownames(dat37) <- ex3.7[, 1]  
+head(dat37)  
+#数据标准化  
+dat37_scale <- scale(dat37, center=TRUE, scale=TRUE) 
+
+
+#计算欧式矩阵  
+dat37_dist <-dist(dat37_scale, method = "euclidean", diag = TRUE, upper = FALSE)  
+library(lattice)  
+#相似矩阵的图形
+lattice::levelplot(as.matrix(dat37_dist), xlab="", ylab="")
+
+#类平均法  
+dat37_average <- hclust(dat37_dist, method="average")  
+plot(dat37_average)  
+
+#分类的目数  
+library(NbClust)  
+fit <- NbClust::NbClust(dat37_scale, distance="euclidean", min.nc = 3,max.nc = 6, method="average", index="alllong")  
+#30个分类指标最优个数  
+fit$Best.nc  #界面有限结束没有给出  
+table(fit$Best.nc[1, ])  
+#对应的最优分类  
+fit$Best.partition  
+
+library(cluster)　#加载cluster包  
+fresult<-fanny(dat37_scale,3)　#使用fanny函数进行模糊聚类并将结果保存在fresult中  
+summary(fresult)　#输出聚类结果  
+Membership coefficients (in %, rounded):  
+
+
+
+
+

@@ -1,0 +1,33 @@
+ccdata<-read.csv("E:/例8-2.csv",head=T)　#读取数据文件,数据的第一列为地区
+ECO<-ccdata[,2:7]　#将经济指标数据单独保存并命名为ECO
+ECOS<-scale(ECO)　#对数据进行标准化
+AIR<-ccdata[,8:13] 　#将空气质量指标数据单独保存并命名为AIR
+AIRS<-scale(AIR)
+install.packages("CCA")　#安装做典型相关分析的包CCA,若已经安装请跳过此句
+library(CCA)　#加载CCA包
+matcor(ECOS,AIRS)
+cc1<-cc(ECOS,AIRS)
+cc1[1]　#输出典型相关系数
+cc1[3:4]　#输出典型系数,是标准化的典型系数即典型权重
+cc1[5]　#输出典型变量得分及典型变量与各变量的相关系数矩阵
+##　典型相关系数的显著性检验
+ev<-cc1$cor^2
+ev2<-1-ev
+n<-dim(ECOS)[1]
+p<-dim(ECOS)[2]
+q<-dim(AIRS)[2] 
+l<-length(ev)
+m<-n -1 - (p+q+1)/2
+w<-cbind(NULL)
+for (i in 1:l){
+  w<-cbind(w,prod(ev2[i:l]))}
+d<-cbind(NULL)
+Q<-cbind(NULL)
+for (i in 1:l){
+  Q<-cbind(Q,-(m-(i-1))*log(w[i]))
+  d<-cbind(d,(p-i+1)*(q-i+1))}
+pvalue<-pchisq(Q,d,lower.tail=FALSE)
+bat<-cbind(t(Q),t(d),t(pvalue))
+colnames(bat)<-c("Chi-Squared","df","pvalue")
+rownames(bat)<-c(seq(1:l))
+bat　#输出统计量、自由度和相应的p值

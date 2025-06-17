@@ -1,0 +1,23 @@
+hotelT2.dif <- function(x, y){  
+  x <- as.matrix(x)  
+  y <- as.matrix(y)  
+  p  <- ncol(x)   
+  n1 <- nrow(x)   
+  n2 <- nrow(y)   
+  n  <- n1 + n2   
+  xbar <- apply(x, 2, mean)   
+  ybar <- apply(y, 2, mean)   
+  dbar <- xbar - ybar  
+  Sx_star <- cov(x) / n1   
+  Sy_star <- cov(y) / n2    
+  S_star <- Sx_star +  Sy_star  
+  SS_star <- solve(S_star)  
+  T2 <- as.numeric(dbar %*% SS_star %*%dbar)  
+  SxS_star <-  Sx_star %*% SS_star  
+  SyS_star <-  Sy_star %*% SS_star  
+  f0 <- (sum(diag(SxS_star %*% SxS_star))+sum(diag(SxS_star))^2)/n1 + (sum(diag(SyS_star %*% SyS_star))+sum(diag(SyS_star))^2)/n2   
+  f <- (p + p^2)/ f0  
+  T2_adj <- as.vector((f - p + 1) / (f * p) * T2 )  
+  pvalue <- 1 - pf(T2_adj, p, f-p-1)   
+  return(list(T2adj= T2_adj, p.value=pvalue))  
+} 

@@ -1,0 +1,17 @@
+rm(list=ls())  
+ex9.2 <- read.table("E:例9-2.txt", head=TRUE, fileEncoding="utf8")  
+#未加权  
+fit <- lm(ex9.2$逻辑变换~ex9.2$年家庭收入)  
+fit$coefficients  
+#加权  
+fit_wi <- lm(ex9.2$逻辑变换~ex9.2$年家庭收入, weights=ex9.2$权重)  
+summary(fit_wi)  
+
+
+
+
+
+
+
+
+

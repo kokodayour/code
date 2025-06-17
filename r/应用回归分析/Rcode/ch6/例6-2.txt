@@ -1,0 +1,67 @@
+ex6.2 <- read.table("例6-2.txt", head=TRUE, fileEncoding="utf8")  
+dat62 <- ex6.2[, -1]  
+rownames(dat62) <- ex6.2[, 1]  
+dat62 <- scale(dat62, center = TRUE, scale = TRUE)  
+library(psych)  
+#检验  
+psych::KMO(dat62)  
+p <- dim(dat62)[2]  
+#Bartlett检验
+ocov.test(x=dat62, Sigma0=diag(p))  
+
+#建模  
+fit62_var <- psych::principal(dat62, nfactors = 3, rotate = 'varimax', covar = TRUE)  
+lam62 <- fit62_var$values#特征值  
+#方差解释  
+cumlam62 <- cumsum(lam62)/sum(lam62)  
+VE62 <- data.frame(lam62, lam62/sum(lam62), cumlam62)  
+colnames(VE62) <- c("特征值","比例","累计比例")  
+round(VE62, 3)  
+#碎石图
+plot(lam62, type="o", xlab="因子序号", ylab="特征值") 
+
+
+##因子载荷  
+load62 <- as.matrix.data.frame(fit62_var$loadings)  
+rownames(load62) <- colnames(dat62)  
+round(load62, 3)  
+F123_62 <- fit62_var$scores  
+#因子得分  
+xx62 <- t(dat62) %*% dat62  
+xy62 <- t(dat62) %*% F123_62   
+score62_mat <- solve(xx62) %*% xy62  
+rownames(score62_mat) <- colnames(dat62)  
+print(score62_mat, digits=2)  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

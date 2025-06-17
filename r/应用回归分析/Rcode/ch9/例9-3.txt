@@ -1,0 +1,27 @@
+rm(list=ls())  
+ex9.3 <- read.table("例9-3.txt", head=TRUE, fileEncoding="utf8")  
+head(ex9.3)  
+fit9.3_full <- glm(y~性别+年龄+月收入, binomial(link = "logit"), data=ex9.3)  
+summary(fit9.3_full)    
+
+
+fit9.3<- glm(y~性别+年龄, binomial(link = "logit"), data=ex9.3)  
+summary(fit9.3)  
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+
+
+
+
+
+
+

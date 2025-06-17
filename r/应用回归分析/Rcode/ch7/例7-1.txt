@@ -1,0 +1,131 @@
+rm(list=ls())  
+ex7.1 <- read.table("例7-1new.txt", head=TRUE, fileEncoding="utf8")  
+dat71 <- ex7.1[, -1]  
+rownames(dat71) <- ex7.1[, 1]  
+n <- sum(dat71)  
+print(n)  
+#卡方独立性检验  
+chisq.test(dat71)  
+
+#P  
+PP <- dat71 / sum(dat71)  
+round(PP,3)  
+PI <- apply(PP, 1, sum)#pi.  
+PJ <- apply(PP, 2, sum)#p.j  
+round(PI,3)  
+round(PJ,3)  
+
+################计算Z  
+pitpj <- PI %*% t(PJ)  
+pitpj_sqr <- sqrt(pitpj)  
+ZZ <- (PP - pitpj) / pitpj_sqr  
+#行惯量  
+round(apply(ZZ^2, 1, sum), 3)  
+#列惯量  
+round(apply(ZZ^2, 2, sum),3)  
+#总惯量与卡方值的关系  
+sum(ZZ^2)  
+sum(ZZ^2) * n  
+
+
+#奇异值分解  
+fit71 <-  svd(ZZ)  
+#特征值  
+lamc <- fit71$d^2  
+#方差解释  
+cumlamc <- cumsum(lamc)/sum(lamc)  
+VEc <- data.frame(fit71$d, lamc, lamc/sum(lamc), cumlamc)  
+colnames(VEc) <- c("奇异值","特征值","比例","累计比例")  
+round(VEc, 3)  
+
+#行主成分轮廓坐标  
+FF <- diag(PI^(-0.5)) %*% fit71$u %*% diag(fit71$d)  
+rownames(FF) <- rownames(dat71)  
+round(FF, 3)  
+#列主成分轮廓坐标  
+GG <- diag(PJ^(-0.5)) %*% fit71$v %*% diag(fit71$d)  
+rownames(GG) <- colnames(dat71)  
+round(GG, 3)   
+#画图  
+plot(FF[, 1], FF[,2], xlab = "轮廓1", ylab="轮廓2", xlim=c(-1.5,1), ylim=c(-0.2,0.2))  
+text(FF[, 1], FF[,2], rownames(dat71), adj=1.3)  
+points(GG[, 1], GG[,2], pch="+")  
+text(GG[, 1], GG[,2], colnames(dat71), adj=-0.2)
+
+library(FactoMineR)  
+fit_ca <- FactoMineR::CA(dat71, graph = FALSE)  
+#方差解释  
+fit_ca$eig  
+#行惯量  
+fit_ca$row$inertia  
+#行主成分轮廓坐标  
+fit_ca$row$coord  
+#列惯量  
+fit_ca$col$inertia  
+#列主成分轮廓坐标  
+fit_ca$col$coord  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	 
+
+
+
+
+
+
+
+ 
+ 

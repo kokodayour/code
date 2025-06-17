@@ -1,0 +1,16 @@
+hotelT2.sam <- function(x, y) {
+    x <- as.matrix(x)
+    y <- as.matrix(y)
+    p <- ncol(x)
+    n1 <- nrow(x)
+    n2 <- nrow(y)
+    n <- n1 + n2
+    xbar <- apply(x, 2, mean)
+    ybar <- apply(y, 2, mean)
+    dbar <- xbar - ybar
+    sigmahat <- ((n1 - 1) * var(x) + (n2 - 1) * var(y))/(n - 2)
+    T2 <- (n1 * n2 * t(dbar) %*% solve(sigmahat) %*% dbar)/n
+    T2_adj <- as.vector(((n - p - 1) * T2)/((n - 2) * p))
+    pvalue <- 1 - pf(T2_adj, p, n - p - 1)
+    return(list(T2adj = T2_adj, p.value = pvalue))
+}
