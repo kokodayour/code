@@ -1,10 +1,13 @@
 from collections import deque
+
+
 class TreeNode:
     """二叉树节点类"""
-    def __init__(self, val:int):
-        self.val:int = val
-        self.left:TreeNode|None = None
-        self.right:TreeNode|None = None
+
+    def __init__(self, val: int):
+        self.val: int = val
+        self.left: TreeNode | None = None
+        self.right: TreeNode | None = None
 
     # 层序遍历 广度优先
     def level_order(self) -> list[int]:
@@ -14,7 +17,7 @@ class TreeNode:
         # 初始化一个队列 用于保存遍历序列
         res = []
         while queue:
-            node: TreeNode = queue.popleft() # 从左侧移除一个元素并返回
+            node: TreeNode = queue.popleft()  # 从左侧移除一个元素并返回
             res.append(node.val)
             if node.left:
                 queue.append(node.left)
@@ -25,6 +28,7 @@ class TreeNode:
     # 前序遍历: 根节点 -> 左子树 -> 右子树
     def preorder_traversal(self):
         result = []
+
         def helper(node):
             if node:
                 result.append(node.val)
@@ -36,6 +40,7 @@ class TreeNode:
     # 中序遍历: 左子树 -> 中节点 -> 右子树
     def inorder_traversal(self):
         result = []
+
         def helper(node):
             if node:
                 helper(node.left)
@@ -47,9 +52,10 @@ class TreeNode:
     # 后序遍历: 左子树 -> 右子树 -> 中节点
     def postorder_traversal(self):
         result = []
+
         def helper(node):
-            if node:  
-                helper(node.left)  
+            if node:
+                helper(node.left)
                 helper(node.right)
                 result.append(node.val)
         helper(self)
@@ -68,6 +74,7 @@ class TreeNode:
 # 完全二叉树: 只有最底层的节点没被填满 且叶节点从左往右填充
 # 完满二叉树: 除了叶节点 其它节点都有两个节点
 # 平衡二叉树: 任意节点的左子树和右子树的高度之差的绝对值不超过1
+
 
 # 初始化二叉树
 # 初始化节点
@@ -88,4 +95,3 @@ n1.left = p
 p.left = n2
 # 删除节点p
 n1.left = n2
-

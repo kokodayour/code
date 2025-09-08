@@ -1,47 +1,24 @@
-def calculate(s):
-    nums, ops = [0], []
-    lookup = {
-        '+': lambda x1, x2: x1 + x2,
-        '-': lambda x1, x2: x1 - x2
-    }
-
-    def calc():
-        b = nums.pop()
-        a = nums.pop()
-        op = ops.pop()
-        nums.append(lookup[op](a, b))
-
-    s = s.replace(' ', '')
-    i, n = 0, len(s)
+def longestPath(parent, s):
+    ans = 0
+    i = 0  # 节点编号
+    n = len(parent)
+    # 用于存放路径
+    res = [(0, {s[0]})]
     while i < n:
-        x = s[i]
-        if x == '(':
-            ops.append(x)
-        # 处理多位数
-        elif x.isdigit():
-            u, j = 0, i
-            while j < n and s[j].isdigit():
-                u = u * 10 + int(s[j])
-                j += 1
-            nums.append(u)
-            i = j - 1
-        elif x in ['+', '-']:
-            if i > 0 and s[i - 1] == '(':
-                nums.append(0)
-            while ops and ops[-1] != '(':
-                calc()
-            ops.append(x)
-        # 右括号
+        if not res:
+            node, path = res.pop(0)
         else:
-            while ops and ops[-1] != '(':
-                calc()
-            if ops:
-                ops.pop()
-        i += 1
-    while ops:
-        calc()
-    return nums.pop()
-
-
-s = "2 + (1+1) +1"
-calculate(s)
+            break
+        ans = len(path)
+        # 找到所有node的子节点
+        for x in parent[i + 1:]:
+            if x == node:
+                i += 1
+                if s[i] not in path:
+                    res.append((i, path | {s[i]}))
+            else:
+                break
+    return ans
+parent = [-1,0,0,1,1,2]
+s = "abacbe"
+longestPath(parent, s)

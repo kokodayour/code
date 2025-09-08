@@ -59,3 +59,5 @@
 29). 推荐投稿期刊指令： Generate a list of potential journals to submit your research paper on [你的研究主题], considering their scope, impact factor, and audience.中文翻译： 生成一份可以提交你关于 [你的研究主题] 的研究论文的潜在期刊列表，同时考虑其范围、影响因子和读者群。
 
 30). 撰写投稿信指令： Write a cover letter to accompany your research paper submission, highlighting the key contributions and novelty of your work.中文翻译： 写一封附在你研究论文提交材料中的投稿信，重点介绍你工作的关键贡献和新颖性。
+
+请帮我在上述段落合适的地方引用合适的参考文献. 确保所有引用的文献必须真实存在, 作者 标题 期刊 出版社名称和年份需准确无误. 若不确定某文献是否存在, 请明确标注'可能存在不确定性'或直接跳过
