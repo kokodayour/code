@@ -61,3 +61,6 @@
 30). 撰写投稿信指令： Write a cover letter to accompany your research paper submission, highlighting the key contributions and novelty of your work.中文翻译： 写一封附在你研究论文提交材料中的投稿信，重点介绍你工作的关键贡献和新颖性。
 
 请帮我在上述段落合适的地方引用合适的参考文献. 确保所有引用的文献必须真实存在, 作者 标题 期刊 出版社名称和年份需准确无误. 若不确定某文献是否存在, 请明确标注'可能存在不确定性'或直接跳过
+
+
+请你扮演一名GIS领域的专家，从研究背景与问题提出、研究方法与模型构建、实验设计与数据分析和研究结论与未来展望四个方面解析这篇文献。

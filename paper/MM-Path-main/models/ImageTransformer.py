@@ -25,7 +25,7 @@ class encoderLayer(nn.Module):
         return x
 
 class ImageTransformer(nn.Module):
-    def __init__(self,pretrained_weights, num_tokens, embedding_size,reduced_size, nhead, num_encoder_layers, dim_feedforward, dropout, max_len,pre_train=True,freeze=False):
+    def __init__(self,pretrained_weights, num_tokens, embedding_size, reduced_size, nhead, num_encoder_layers, dim_feedforward, dropout, max_len,pre_train=True, freeze=False):
         super(ImageTransformer, self).__init__()
         self.reduced_size = reduced_size
 
