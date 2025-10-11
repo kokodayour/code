@@ -38,6 +38,7 @@ class MaskedAutoencoderViT(nn.Module):
         embbed_weight = torch.cat((embbed_weight,vec),dim=0)
         self.patch_embed = embed_layer(embbed_weight)
 
+    # 位置编码
     def emb(self,x):
         x = self.patch_embed(x)
         x = x + self.pos_embed[:, :x.size(1), :]

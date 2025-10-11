@@ -80,6 +80,7 @@ model = TimePredicter(pre, opt=opt, dataset=fine_tune_dataset)
 model.to(device)
 criterion = torch.nn.MSELoss()
 optimizer = optim.Adam(model.parameters(), lr=opt.lr)
+# 学习率调度器
 scheduler = optim.lr_scheduler.ReduceLROnPlateau(optimizer, mode='min', factor=0.1, patience=5, verbose=True)
 
 best_loss = float('inf')
@@ -93,6 +94,7 @@ tbar = range(opt.batch_size)
 all_train_time,all_val_time,all_test_time = 0.0, 0.0, 0.0
 
 for epoch in tbar:
+        # ----------训练阶段----------
         model.train()
         train_loss,train_mae,train_mare,train_mape,train_batches,train_time = 0.0, 0.0, 0.0, 0.0, 0.0, 0
         print(f'Epoch:{epoch}============>')
@@ -114,6 +116,8 @@ for epoch in tbar:
             train_loss += loss.item()
             train_batches +=1
         all_train_time += train_time
+
+        # ----------验证阶段----------
         model.eval()
         val_mae1,val_loss,val_mae,val_mare_error,val_mare_truth,val_mape,val_rmse,val_batches,val_time =0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0
         with torch.no_grad():
@@ -126,7 +130,7 @@ for epoch in tbar:
                 times = times.to(device).float()
                 start_time = time.time()
                 output = model(path, image, path2Image, graph_edges).squeeze(1)
-                val_time +=time.time() - start_time
+                val_time += time.time() - start_time
                 loss = criterion(output, times)
 
                 times = times * (fine_tune_dataset.times_max-fine_tune_dataset.times_min) + fine_tune_dataset.times_min
@@ -162,8 +166,10 @@ for epoch in tbar:
                 "val_mape":val_mape,
                 "val_rmse":val_rmse,
                 }))
-        
+            # 调整学习率
             scheduler.step(val_loss)
+
+            # ----------测试阶段----------
             model.eval()
             test_mae1,test_loss,test_mae,test_mare_error,test_mare_truth,test_mape,test_rmse,test_time,test_batches =0.0, 0.0, 0.0, 0.0,0.0, 0.0, 0.0, 0.0, 0
             for batch in test_loader:

@@ -18,7 +18,22 @@ class MMPath(nn.Module):
         img_embedding_size = img_features.size(1)
         img_reduce_size = path_features.size(1)
         
-        self.path_model = PathTransformer(path_features,path_num_tokens, path_embedding_size, path_nhead, path_num_encoder_layers, path_num_decoder_layers, path_dim_feedforward, path_dropout, path_max_len,path_pre_train,path_freeze,predict=predict,mask_prob=mask_prob,city=city,mae_pretrain=mae_pretrain)
+        self.path_model = PathTransformer(
+            path_features,
+            path_num_tokens, 
+            path_embedding_size, 
+            path_nhead, 
+            path_num_encoder_layers, 
+            path_num_decoder_layers, 
+            path_dim_feedforward, 
+            path_dropout, 
+            path_max_len,
+            path_pre_train,
+            path_freeze,
+            predict=predict,
+            mask_prob=mask_prob,
+            city=city,
+            mae_pretrain=mae_pretrain)
         self.image_model = ImageTransformer(img_features,img_num_tokens, img_embedding_size,img_reduce_size, img_nhead, img_num_encoder_layers, img_dim_feedforward, img_dropout, img_max_len,img_pre_train,img_freeze)
         self.multihead_attn = nn.MultiheadAttention(embed_dim=nhid, num_heads=nhead,batch_first=True)
         self.fc1 = nn.Linear(nhid, nhid)
@@ -30,6 +45,7 @@ class MMPath(nn.Module):
         self.path_max_len = path_max_len
 
     def forward(self, path, image, path2image, graph_edges):
+        # 图像数据与路径数据对齐
         path_index = path.clone()
         image_index = image.clone()
         path2image = torch.clamp(path2image, min=0)

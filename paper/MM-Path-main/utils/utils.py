@@ -48,14 +48,23 @@ class MMDataset(Dataset):
 
 
 def mask_tokens(inputs, mask_prob=0.15):
+    r"""
+    inputs = [2, 4, 5, 6, 7, 8, 9, 7, 6, 3, 0, 0]
+    input_mask = [2, 4, 1, 6, 1, 8, 9, 7, 6, 3, 0, 0]
+    target_masked = [0, 0, 5, 0, 7, 0, 0, 0, 0, 0, 0, 0]
+    """
     pad_token_id = 0
     mask_token_id = 1
     cls_token_id = 2
     sep_token_id = 3
     target_masked = inputs.clone()
+    # 排除掉特殊token之后确定哪些位置可以被掩码
     maskable = (inputs != pad_token_id) & (inputs != cls_token_id) & (inputs != sep_token_id)
+    # 创建掩码后的输入序列 初始化是pad_token
     input_mask = torch.full(inputs.shape, fill_value=pad_token_id, device=inputs.device)
+    # 在可掩码位置以15%的概率选择token
     mask = torch.bernoulli(torch.full(inputs.shape, mask_prob).to(inputs.device) * maskable).bool()
+    # 强制每一条样本至少一个token
     mask_indices = torch.multinomial(maskable.float(), num_samples=1, replacement=False).to(inputs.device)
     mask = torch.scatter(mask, dim=1, index=mask_indices, src=torch.ones(mask_indices.size(),dtype=torch.bool,device=inputs.device))
     input_mask[mask] = mask_token_id
