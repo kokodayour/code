@@ -1,4 +1,14 @@
-ctrl+shift+A: 打开最近标签页
+# tabs
+ctrl+W: close the current tab
+ctrl+tab: change to the next tab
+ctrl+shift+tab: change to the previous tab
+ctrl+shift+A: open recent tabs
+
+#
+alt+Left: back
+alt+Right: forward
+
+ctrl+shift+B: display or hidden Favorites
 ctrl+L: 清空控制台
 alt+enter: 在地址栏输入 打开新页面
 /: 跳回到输入框
