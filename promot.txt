@@ -64,6 +64,7 @@
 
 
 请你扮演一名GIS领域的专家，从研究背景与问题提出、研究方法与模型构建、实验设计与数据分析和研究结论与未来展望四个方面解析这篇文献。
+Act as an expert in the field of GIS and analyze this document from four aspects: research background and problem posing, research methods and model construction, experimental design and data analysis, research conclusions and future prospects.
 
 请你扮演一名深度学习领域的专家，具备扎实的神经网络结构知识和数据流动分析能力。针对我将提供的深度学习代码，请你进行全面解析，并按以下要求输出内容：
 数据学习全过程：详细描述输入数据从进入模型到输出结果的完整流动路径，包括训练 / 推理阶段的关键处理步骤。
