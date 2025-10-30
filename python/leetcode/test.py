@@ -1,28 +1,42 @@
-def partition(s: str) -> list[list[str]]:
-    n = len(s)
+def generateParenthesis(n: int) -> list[str]:
     ans = []
-    subs = []
-
-    def dfs(comma, start):
-        """
-        Args:
-            comma: the index of comma
-            start: the index of first elem of 回文串
-        """
-        if comma == n:
-            ans.append(subs.copy())
+    left = right = n
+    # judge whether it is correct
+    st = []
+    # store result
+    path = []
+    
+    # 将括号i压入栈中
+    def dfs(i):
+        nonlocal left, right
+        if (left == 0) & (right == 0):
+            ans.append(''.join(path.copy()))
             return
-        # not select
-        # if comma < n-1:
-        dfs(comma+1, start)
-        # select
-        substring = s[start: comma+1]
-        if substring == substring[::-1]:
-            subs.append(substring)
-            dfs(comma+1, comma+1)
-            subs.pop()
-        
-    dfs(0, 0)
+        if i == 'left':
+            if left == 0:
+                return
+            st.append(0)
+            path.append('(')
+            left -= 1
+        else:
+            # if it is empty, it has no matched 左括号 in the path
+            if not st:
+                return False
+            else:
+                st.pop()
+                path.append(')')
+                right -= 1
+        if left:
+            dfs('left')
+            st.pop()
+            path.pop()
+            left += 1
+        dfs('right')
+        st.append(0)
+        path.pop()
+        right += 1
+    
+    dfs('left')
     return ans
 
-partition('aab')
+generateParenthesis(2)
