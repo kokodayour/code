@@ -28,7 +28,7 @@ def dijkstra(graph, start):
 
     return distance, parents
 
-
+# 使用堆来优化
 def dijkstra_heap(graph, start):
     num_nodes = len(graph)
     # 初始化距离列表，用于存储从起始节点到每个节点的最短距离
