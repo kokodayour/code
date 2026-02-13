@@ -31,16 +31,18 @@ class Logger(object):
         fmt='%(asctime)s - %(pathname)s[line:%(lineno)d] - %(levelname)s: %(message)s'
     ):
         self.logger = logging.getLogger(filename)
-        format_str = logging.Formatter(fmt)
         self.logger.setLevel(self.level_relations.get(level))
-
-        sh = logging.StreamHandler()
-        sh.setFormatter(format_str)
-
-        th = logging.FileHandler(filename=filename, encoding='utf-8', mode='a')
-        th.setFormatter(format_str)
-        self.logger.addHandler(sh)
-        self.logger.addHandler(th)
+        format_str = logging.Formatter(fmt)
+        # avoid add repeated handler
+        if not self.logger.handlers:
+            # output log into console
+            sh = logging.StreamHandler()
+            sh.setFormatter(format_str)
+            # store log into file
+            th = logging.FileHandler(filename=filename, encoding='utf-8', mode='a')
+            th.setFormatter(format_str)
+            self.logger.addHandler(sh)
+            self.logger.addHandler(th)
 
 
 def reduce_mem_usage(df, verbose=True):

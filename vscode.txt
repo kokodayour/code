@@ -1,3 +1,4 @@
+alt+方向键： 移动行
 shift+方向键: 选择多行
 ctrl+pg up/down: 切换标签页
 ctrl+[]: 消除(增加)缩进
