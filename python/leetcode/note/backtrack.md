@@ -12,6 +12,7 @@
 #### 反思：
 
 `for循环`横向遍历 `递归`纵向遍历 回溯不断调整结果集![](https://pica.zhimg.com/v2-03908a0d3543b38759cd0cac358fc340_1440w.jpg "回溯")
+原地修改+恢复现场 不要重新赋值变量
 
 
 #### 题目
@@ -24,9 +25,9 @@
 def dfs(i):
     if stop condition: # generally iterate the leaf node
         store result
-        return
+        return 
     for x in elements:
-        process x
+        process x # 原地修改
         dfs(i+1)
-        backtrack and cancel process result
+        backtrack and cancel process result # 恢复现场
 ```
